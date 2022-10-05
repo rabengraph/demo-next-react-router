@@ -11,4 +11,17 @@ const Index: NextPage = () => {
   return <App serverLocation={isOnServer ? `/${id}` : undefined} />;
 };
 
+export function getStaticPaths() {
+  return {
+    paths: [1, 2, 3].map((id) => ({ params: { id: String(id) } })),
+    fallback: false, // can also be true or 'blocking'
+  };
+}
+
+export function getStaticProps() {
+  return {
+    props: {},
+  };
+}
+
 export default Index;
